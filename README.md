@@ -240,10 +240,5 @@ Declare `@extend` followed by `@include` statements first in a declaration block
 ```
 
 
-
-
-<a name="example"></a>
-## 5. Practical example
-
 Based on a work at
 [github.com/necolas/idiomatic-css](https://github.com/necolas/idiomatic-css).
