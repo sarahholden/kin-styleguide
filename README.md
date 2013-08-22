@@ -1,142 +1,239 @@
-# OOCSS code standards
+# Principles of writing consistent, idiomatic CSS
 
-The purpose of this document is to provide guidelines for writing CSS. Code conventions are important for the long-term maintainability of code. Most of the time, developers are maintaining code, either their own or someone else’s. The goal is to have everyone’s code look the same, which allows any developer to easily work on another developer’s code.
+The purpose of this document is to provide guidelines for writing CSS. Code conventions are important for the long-term maintainability of code. The goal is to have everyone’s code look the same, which allows any developer to easily work on another developer’s code.
 
-We've borrowed some ideas from [Idiomatic CSS](https://github.com/necolas/idiomatic-css) and credited it throughout the document.
 
-### Class Names
 
-Class names should be camel case, with no dashes or underscores.
+## Table of contents
 
-```css
-/* Good - Use camel case */
-.thisIsGood {}
+1. [General principles](#general-principles)
+2. [Whitespace](#whitespace)
+3. [Comments](#comments)
+4. [Format](#format)
+5. [Practical example](#example)
 
-/* Bad - don't use underscores */
-.this_is_bad {}
+[Acknowledgements](#acknowledgements)
 
-/* Bad - don't use dashes */
-.this-is-bad {}
-```
+[License](#license)
 
-### Indentation
 
-Each indentation level is made up of four spaces. Do not use tabs. (Please set your editor to use four spaces)
+<a name="general-principles"></a>
+## 1. General principles
 
+> "Part of being a good steward to a successful project is realizing that
+> writing code for yourself is a Bad Idea™. If thousands of people are using
+> your code, then write your code for maximum clarity, not your personal
+> preference of how to get clever within the spec." - Idan Gazit
+
+* Don't try to prematurely optimize your code; keep it readable and
+  understandable.
+* All code in any code-base should look like a single person typed it, even
+  when many people are contributing to it.
+* Strictly enforce the agreed-upon style.
+
+
+<a name="whitespace"></a>
+## 2. Whitespace
+
+Each indentation level is made up of one tab
 ```css
 /* Good */
-.stubbornella {
+.class {
+  color: #fff;
+  background-color: #000;
+}
+
+/* Bad - four spaces */
+.class {
     color: #fff;
     background-color: #000;
 }
 
 /* Bad - all on one line */
-.stubbornella {color: #fff; background-color: #000;}
+.class {color: #fff; background-color: #000;}
 ```
 
-Rules inside of `@media` must be indented an additional level.
+In Sublime, go to View>Indendation>Tab Width: 2, also uncheck "Indent Using Spaces." Also install Sublime's "Trailing Spaces" plugin through package control to be able to see/trim trailing white space easily.
+
+
+<a name="comments"></a>
+## 3. Comments
+
+Always comment your code!
+
+* Place comments on a new line above their subject.
+* Keep line-length to a sensible maximum, e.g., 80 columns.
+* Make liberal use of comments to break CSS code into discrete sections.
+* Use "sentence case" comments and consistent text indentation.
+
+Example:
+
+```css
+/* ==========================================================================
+   Section comment block
+   ========================================================================== */
+
+/* Sub-section comment block
+   ========================================================================== */
+
+/**
+ * Short description using Doxygen-style comment format
+ *
+ * The first sentence of the long description starts here and continues on this
+ * line for a while finally concluding here at the end of this paragraph.
+ *
+ * The long description is ideal for more detailed explanations and
+ * documentation. It can include example HTML, URLs, or any other information
+ * that is deemed necessary or useful.
+ *
+ * @tag This is a tag named 'tag'
+ *
+ * TODO: This is a todo statement that describes an atomic task to be completed
+ *   at a later date. It wraps after 80 characters and following lines are
+ *   indented by 2 spaces.
+ */
+
+/* Basic comment */
+```
+
+
+<a name="format"></a>
+## 4. Format
+
+* Use one discrete selector per line in multi-selector rulesets.
+* Do not include any space before the opening brace of a ruleset.
+* Include one declaration per line in a declaration block.
+* Use one level of indentation for each declaration.
+* Include a single space after the colon of a declaration.
+* Use lowercase and shorthand hex values, e.g., `#aaa`.
+* Use double quotes e.g., `content: ""`.
+* Quote attribute values in selectors, e.g., `input[type="checkbox"]`.
+* _Where allowed_, avoid specifying units for zero-values, e.g., `margin: 0`.
+* Include a space after each comma in comma-separated property or function
+  values.
+* Include a semi-colon at the end of the last declaration in a declaration
+  block.
+* Place the closing brace of a ruleset in the same column as the first
+  character of the ruleset.
+* Separate each ruleset by a blank line.
+* For classes, always use dashes and never camel case or underscores
+
+```css
+.selector-1,
+.selector-2,
+.selector-3[type="text"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  font-family: helvetica, arial, sans-serif;
+  color: #333;
+  background: #fff;
+  background: linear-gradient(#fff, rgba(0, 0, 0, 0.8));
+}
+
+.selector-a,
+.selector-b {
+  padding: 10px;
+}
+```
 
 ```css
 /* Good */
-@media screen and (max-width:480px) {
-   .stubbornella {
-       color: green;
+.class-name {
+  background-color: blue;
+  color: red;
+}
+
+/* Bad - missing spaces after colons */
+.class-name {
+  background-color:blue;
+  color:red;
+}
+
+/* Bad - missing last semicolon */
+.class-name {
+  background-color: blue;
+  color:red
+}
+```
+
+```css
+/* Good */
+.class-name {
+  color: #fff;
+}
+
+/* Bad - closing brace is in the wrong place */
+.class-name {
+  color: #fff;
+  }
+
+/* Bad - opening brace missing space */
+.class-name{
+  color: #fff;
+}
+```
+
+```css
+/* Good - Use dashes */
+.this-is-good {}
+
+/* Good - don't use camel case */
+.thisIsBad {}
+
+/* Bad - don't use underscores */
+.this_is_bad {}
+```
+
+### SCSS
+
+Keep nesting to 3 levels deep!!! This prevents overly-specific CSS selectors. Avoid large numbers of nested rules. Break them up when readability starts to be affected. Preference to avoid nesting that spreads over more than 20 lines.
+
+```scss
+/* Good */
+.class-name {
+  .inner {
+    ...
+
+      .title {
+       ....
+
+          .subtxt {
+          ...
+
+           }
+       }
+   }
+}
+
+/* Bad - more than 3 levels of nesting */
+.class-name {
+  .inner {
+    ...
+
+      .title {
+       ....
+
+          .subtxt {
+              ...
+
+              .element {
+                  ...
+
+               }
+           }
+       }
    }
 }
 ```
 
-### Brace Alignment
 
-The opening brace should be on the same line as the last selector in the rule and should be preceded by a space. The closing brace should be on its own line after the last property and be indented to the same level as the line on which the opening brace is.
-
-```css
-/* Good */
-.stubbornella {
-    color: #fff;
-}
-
-/* Bad - closing brace is in the wrong place */
-.stubbornella {
-    color: #fff;
-    }
-
-/* Bad - opening brace missing space */
-.stubbornella{
-    color: #fff;
-}
-```
-
-### Property Format
-
-Each property must be on its own line and indented one level. There should be no space before the colon and one space after. All properties must end with a semicolon.
-
-```css
-/* Good */
-.stubbornella {
-    background-color: blue;
-    color: red;
-}
-
-/* Bad - missing spaces after colons */
-.stubbornella {
-    background-color:blue;
-    color:red;
-}
-
-/* Bad - missing last semicolon */
-.stubbornella {
-    background-color: blue;
-    color:red
-}
-```
-
-### Using CSS Preprocessors
-
-Keep nesting to 3 levels deep. 
+Declare `@extend` followed by `@include` statements first in a declaration block.
 
 ```scss
 /* Good */
-.stubbornella {
-    .inner {
-      ...
-
-        .title {
-         ....
-
-            .subtxt {
-            ...
-
-            }
-        }
-    }
-}
-
-/* Bad - more than 3 levels of nesting */
-.stubbornella {
-    .inner {
-      ...
-
-        .title {
-         ....
-
-            .subtxt {
-                ...
-
-                .element {
-                    ...
-
-                }
-            }
-        }
-    }
-}
-```
-
-Declare `@extend` followed by `@include` statements first in a declaration block. (Borrowed from [Idiomatic CSS] (https://github.com/necolas/idiomatic-css#4-format))
-
-```scss
-/* Good */
-.stubbornella {
+.class-name {
     @extend .company;
     @include font-size(14);
     color: #555;
@@ -144,7 +241,7 @@ Declare `@extend` followed by `@include` statements first in a declaration block
 }
 
 /* Bad */
-.stubbornella {
+.class-name {
     color: #555;
     @extend .company;
     font-size: 11px;
@@ -152,373 +249,11 @@ Declare `@extend` followed by `@include` statements first in a declaration block
 }
 ```
 
-### Vendor-Prefixed Properties
 
-When using vendor-prefixed properties, always use the standard property as well. The standard property must always come after all of the vendor-prefixed versions of the same property.
 
-```css
-.stubbornella {
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-}
-```
 
-If a vendor prefixed property is used, -moz, -webkit, -o, -ms vendor prefixes should also be used. Vendor-prefixed classes should align to the left with all other properties.
+<a name="example"></a>
+## 5. Practical example
 
-```css
-/* Good */
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
-border-radius: 4px;
-
-/* Bad - colons aligned */
--webkit-border-radius:4px;
-   -moz-border-radius:4px;
-        border-radius:4px;
-```
-
-Suffix property value pairs that apply only to a particular browser or class of browsers with a comment listing browsers affected.
-
-```css
-background: #fcfcfc; /* Old browsers */
-background: -moz-linear-gradient(...); /* FF3.6+ */
-background: -webkit-gradient(...); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(...); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(...); /* Opera 11.10+ */
-background: -ms-linear-gradient(...); /* IE10+ */
-background: linear-gradient(...); /* W3C */
-```
-
-Suffix fallback with “Old browsers” and standard property with “W3C”. Add a plus or minus to indicate that a property applies to all previous browsers by the same vendor or all future browsers by the same vendor.
-Using !important
-
-Do not use !important on CSS properties. The only time this is allowed is in a global style (provided by Core team).
-
-```css
-/* Good */
-.stubbornella {
-   color: red;
-}
-
-/* Bad - don't use !important */
-.stubbornella {
-   color: red !important;
-}
-```
-
-### Font Sizing
-
-All font sizes must be specified using rem only with a pixel fall back. Do not use percentages, ems or pixels alone.
-
-```css
-/* Good */
-.stubbornella {
-   font-size: 14px; /* pixel fall back rule should come first */
-   font-size: 1.4rem;
-}
-
-/* Bad - uses ems */
-.stubbornella {
-   font-size: 1.2em;
-}
-
-/* Bad - uses percentage */
-.stubbornella {
-   font-size: 86%;
-}
-
-/* Bad - uses pixel only */
-.stubbornella {
-   font-size: 14px;
-}
-```
-
-### HEX value
-
-When declaring HEX values, use lowercase and shorthand (where possible) (Borrowed from [Idiomatic CSS] (https://github.com/necolas/idiomatic-css#4-format))
-
-```css
-/* Good */
-.stubbornella {
-    color: #ccc;
-}
-
-/* Bad */
-.stubbornella {
-    color: #CCCCCC;
-}
-```
-
-### String Literals
-
-Strings should always use double quotes (never single quotes).
-
-```css
-/* Good */
-.stubbornella:after {
-    content: "Stubbornella";
-}
-
-/* Bad - single quotes */
-.stubbornella:after {
-    content: 'Stubbornella';
-}
-```
-
-### Background Images and Other URLs
-
-When using a url() value, always use quotes around the actual URL. 
-
-```css
-/* Good */
-.stubbornella {
-    background: url("img/logo.png");
-}
-
-/* Bad - missing quotes */
-.stubbornella {
-    background: url(img/logo.png);
-}
-```
-
-### Attribute values in selectors
-
-Use double quotes around attribute selectors.
-
-```css
-/* Good */
-input[type="submit"] {
-    ...
-}
-
-/* Bad - missing quotes */
-input[type=submit] {
-    ...
-}
-
-/* Bad - using single quote */
-input[type='submit'] {
-    ...
-}
-```
-
-
-### Do not use units with zero values
-
-Zero values do not require named units, omit the “px” or other unit.
-
-```css
-/* Good */
-.stubbornella {
-   margin: 0;
-}
-
-/* Bad - uses units */
-.stubbornella {
-   margin: 0px;
-}
-```
-
-### Internet Explorer Hacks
-
-Only property hacks are allowed. To target Internet Explorer, use Internet Explorer-specific hacks like * and _ in the normal CSS files. Browser specific styles should not be in separate per-browser stylesheets. We prefer to keep all the CSS for a particular object in one place as it is more maintainable. In addition selector hacks should not be used. Classes like .ie6 increase specificity. Hacks should be kept within the CSS rule they affect and only property hacks should be used.
-
-```css
-/* Good */
-.stubbornella {
-   margin: 0;
-   _margin: -1px;
-}
-
-/* Bad - uses selector hacks */
-.stubbornella {
-   margin: 0px;
-}
-.ie6 .stubbornella {
-   margin: -1px;
-}
-```
-
-### Selectors
-
-Each selector should appear on its own line. The line should break immediately after the comma. Each selector should be aligned to the same left column.
-
-```css 
-/* Good */
-button,
-input.button {
-   color: red;
-}
-
-/* Bad - selectors one on line */
-button, input.button {
-   color: red;
-}
-```
-
-### Class Qualification
-
-Do not over-qualify class name selectors with an element type unless you are specifying exceptions to the default styling of a particular class.
-
-``` css
-/* Good */
-.buttonAsLink {}
-
-/* Bad - element name should be omitted */
-span.buttonAsLink {}
-
-/* Good - element is providing exceptions */
-.buttonAsLink {}
-span.buttonAsLink {}
-```
-
-### Scoped styles
-
-All selectors for a particular component start with the wrapper class name.
-
-```css
-/* Good */
-.calloutButton {
-   color: blue;
-}
-.calloutButton span {
-   color: green;
-}
-
-/* Bad - second rule missing scope */
-.calloutButton {
-   color: blue;
-}
-span {
-   color: green;
-}
-```
-
-### JavaScript Dependence
-
-All rules should be coded to expect JavaScript to be enabled. Rules that apply when JavaScript is disabled should be preceded by the noJS class.
-
-```css
-/* Good */
-.noJS .calloutContent {
-   display:block;
-}
-
-/* Bad - don't use .js */
-.js .calloutContent{
-   display: none;
-}
-```
-
-### :hover and :focus
-
-If :hover pseudo class is styled, :focus should also be styled for accessibility. Focus styles should never be removed.
-
-```css
-/* Good */
-a:hover,
-a:focus {
-   color: green;
-}
-
-/* Bad - missing :focus */
-a:hover {
-   color: green;
-}
-```
-
-### Avoid using IDs
-
-Selectors should never use HTML element IDs. Always use classes for applying styles to specific areas of a page.
-
-```css
-/* Good */
-.header {
-   height: 100px;
-}
-
-/* Bad - using an ID */
-#header {
-   height: 100px;
-}
-```
-
-The author field should contain the username of the person who first created the file. Subsequent authors or primary maintainers may also choose to add their name. The browsers in which this file was tested should be listed next to @tested.
-
-### Width and height on components
-
-No heights on anything that contains text. Components should be flexible and their widths should be controlled by grids.
-
-```css
-/* Good - no width specified */
-.calloutContent {
-    border: 1px solid #ccc;
-    background: #fff;
-}
-
-/* Bad - dimension specified */
-.calloutContent {
-    width: 200px;
-    height: 150px;
-    border: 1px solid #ccc;
-    background: #fff;
-}
-```
-
-### Naming classes
-
-When labelling elements within a component with a class, try to avoid generic classes like ``.inner``, ``.hd``, ``.bd``. Instead, prefix the class name with the name of the component. This is to avoid CSS getting overwritten when classes are too generic.
-
-```css
-/* Good */
-.boxHd {
-    background: #ccc;
-}
-.boxBd {
-    background: #ccc;
-}
-
-/* Bad */
-.box .hd {
-    background: #ccc;
-}
-.box .bd  {
-    background: #ccc;
-}
-```
-
-However when extending a component and styling the inner elements, try to use the base component's inner elements' class name for styling, instead of extending the class names of the inner elements as well.
-
-```css
-/* Good */
-.boxSimple .boxHd {
-    background: #ccc;
-}
-.boxSimple .boxBd {
-    background: #ccc;
-}
-
-/* Avoid this if possible */
-.boxSimple .boxSimpleHd {
-    background: #ccc;
-}
-```
-
-
-### Comments
-
-We follow the commenting guideline from [Idiomatic CSS] (https://github.com/necolas/idiomatic-css#comments) with the following exception:
-* Place comment on the same line as the CSS declaration it's related to.
-
-Also, add file-level comments at the top of every CSS file, describing the file in the following format:
-
-```css
-/**
-* @desc         Description of the file.
-* @name         Simple name for the file (i.e., Search_Widget)
-* @author       username
-* @tested       browsers
-* @requires     helpers.css (tied to the @name of another file)
-*/
-```
+Based on a work at
+[github.com/necolas/idiomatic-css](https://github.com/necolas/idiomatic-css).
