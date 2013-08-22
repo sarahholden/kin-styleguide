@@ -177,7 +177,7 @@ Example:
 
 
 <a name="scss"></a>
-## 4. SCSS
+## 5. SCSS
 
 Keep nesting to 3 levels deep!!! This prevents overly-specific CSS selectors. Avoid large numbers of nested rules. Break them up when readability starts to be affected. Preference to avoid nesting that spreads over more than 20 lines.
 
