@@ -10,20 +10,10 @@ The purpose of this document is to provide guidelines for writing CSS. Code conv
 2. [Whitespace](#whitespace)
 3. [Comments](#comments)
 4. [Format](#format)
-5. [Practical example](#example)
-
-[Acknowledgements](#acknowledgements)
-
-[License](#license)
 
 
 <a name="general-principles"></a>
 ## 1. General principles
-
-> "Part of being a good steward to a successful project is realizing that
-> writing code for yourself is a Bad Idea™. If thousands of people are using
-> your code, then write your code for maximum clarity, not your personal
-> preference of how to get clever within the spec." - Idan Gazit
 
 * Don't try to prematurely optimize your code; keep it readable and
   understandable.
@@ -35,7 +25,7 @@ The purpose of this document is to provide guidelines for writing CSS. Code conv
 <a name="whitespace"></a>
 ## 2. Whitespace
 
-Each indentation level is made up of one tab
+Each indentation level is made up of one 2-space tab
 ```css
 /* Good */
 .class {
