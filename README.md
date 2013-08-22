@@ -17,7 +17,7 @@ The purpose of this document is to provide guidelines for writing CSS. Code conv
 
 * Don't try to prematurely optimize your code; keep it readable and
   understandable.
-* All code in any code-base should look like a single person typed it, even
+* All code should look like a single person typed it, even
   when many people are contributing to it.
 * Strictly enforce the agreed-upon style.
 
