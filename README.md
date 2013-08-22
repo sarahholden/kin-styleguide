@@ -8,8 +8,10 @@ The purpose of this document is to provide guidelines for writing CSS. Code conv
 
 1. [General principles](#general-principles)
 2. [Whitespace](#whitespace)
-3. [Comments](#comments)
-4. [Format](#format)
+3. [Format](#format)
+4. [Comments](#comments)
+5. [SCSS](#scss)
+
 
 
 <a name="general-principles"></a>
@@ -45,50 +47,8 @@ Each indentation level is made up of one 2-space tab
 
 In Sublime, go to View>Indendation>Tab Width: 2, also uncheck "Indent Using Spaces." Also install Sublime's "Trailing Spaces" plugin through package control to be able to see/trim trailing white space easily.
 
-
-<a name="comments"></a>
-## 3. Comments
-
-Always comment your code!
-
-* Place comments on a new line above their subject.
-* Keep line-length to a sensible maximum, e.g., 80 columns.
-* Make liberal use of comments to break CSS code into discrete sections.
-* Use "sentence case" comments and consistent text indentation.
-
-Example:
-
-```css
-/* ==========================================================================
-   Section comment block
-   ========================================================================== */
-
-/* Sub-section comment block
-   ========================================================================== */
-
-/**
- * Short description using Doxygen-style comment format
- *
- * The first sentence of the long description starts here and continues on this
- * line for a while finally concluding here at the end of this paragraph.
- *
- * The long description is ideal for more detailed explanations and
- * documentation. It can include example HTML, URLs, or any other information
- * that is deemed necessary or useful.
- *
- * @tag This is a tag named 'tag'
- *
- * TODO: This is a todo statement that describes an atomic task to be completed
- *   at a later date. It wraps after 80 characters and following lines are
- *   indented by 2 spaces.
- */
-
-/* Basic comment */
-```
-
-
 <a name="format"></a>
-## 4. Format
+## 3. Format
 
 * Use one discrete selector per line in multi-selector rulesets.
 * Do not include any space before the opening brace of a ruleset.
@@ -175,8 +135,49 @@ Example:
 /* Bad - don't use underscores */
 .this_is_bad {}
 ```
+<a name="comments"></a>
+## 4. Comments
 
-### SCSS
+Always comment your code!
+
+* Place comments on a new line above their subject.
+* Keep line-length to a sensible maximum, e.g., 80 columns.
+* Make liberal use of comments to break CSS code into discrete sections.
+* Use "sentence case" comments and consistent text indentation.
+
+Example:
+
+```css
+/* ==========================================================================
+   Section comment block
+   ========================================================================== */
+
+/* Sub-section comment block
+   ========================================================================== */
+
+/**
+ * Short description using Doxygen-style comment format
+ *
+ * The first sentence of the long description starts here and continues on this
+ * line for a while finally concluding here at the end of this paragraph.
+ *
+ * The long description is ideal for more detailed explanations and
+ * documentation. It can include example HTML, URLs, or any other information
+ * that is deemed necessary or useful.
+ *
+ * @tag This is a tag named 'tag'
+ *
+ * TODO: This is a todo statement that describes an atomic task to be completed
+ *   at a later date. It wraps after 80 characters and following lines are
+ *   indented by 2 spaces.
+ */
+
+/* Basic comment */
+```
+
+
+<a name="scss"></a>
+## 4. SCSS
 
 Keep nesting to 3 levels deep!!! This prevents overly-specific CSS selectors. Avoid large numbers of nested rules. Break them up when readability starts to be affected. Preference to avoid nesting that spreads over more than 20 lines.
 
