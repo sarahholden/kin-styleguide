@@ -1,4 +1,4 @@
-# Principles of writing consistent, idiomatic CSS
+# Kin Styleguide
 
 The purpose of this document is to provide guidelines for writing CSS. Code conventions are important for the long-term maintainability of code. The goal is to have everyone’s code look the same, which allows any developer to easily work on another developer’s code.
 
