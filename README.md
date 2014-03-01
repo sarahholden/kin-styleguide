@@ -30,19 +30,19 @@ The purpose of this document is to provide guidelines for writing CSS. Code conv
 Each indentation level is made up of one 2-space tab
 ```css
 /* Good */
-.class{
+.class {
   color: #fff;
   background-color: #000;
 }
 
 /* Bad - four spaces */
-.class{
+.class {
     color: #fff;
     background-color: #000;
 }
 
 /* Bad - all on one line */
-.class{color: #fff; background-color: #000;}
+.class {color: #fff; background-color: #000;}
 ```
 
 In Sublime, go to View>Indendation>Tab Width: 2, also uncheck "Indent Using Spaces." Also install Sublime's "Trailing Spaces" plugin through package control to be able to see/trim trailing white space easily.
@@ -51,7 +51,7 @@ In Sublime, go to View>Indendation>Tab Width: 2, also uncheck "Indent Using Spac
 ## 3. Format
 
 * Use one discrete selector per line in multi-selector rulesets.
-* Do not include any space before the opening brace of a ruleset.
+* Include a space before the opening brace of a ruleset.
 * Include one declaration per line in a declaration block.
 * Use one level of indentation for each declaration.
 * Include a single space after the colon of a declaration.
@@ -71,7 +71,7 @@ In Sublime, go to View>Indendation>Tab Width: 2, also uncheck "Indent Using Spac
 ```css
 .selector-1,
 .selector-2,
-.selector-3[type="text"]{
+.selector-3[type="text"] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -83,26 +83,26 @@ In Sublime, go to View>Indendation>Tab Width: 2, also uncheck "Indent Using Spac
 }
 
 .selector-a,
-.selector-b{
+.selector-b {
   padding: 10px;
 }
 ```
 
 ```css
 /* Good */
-.class-name{
+.class-name {
   background-color: blue;
   color: red;
 }
 
 /* Bad - missing spaces after colons */
-.class-name{
+.class-name {
   background-color:blue;
   color:red;
 }
 
 /* Bad - missing last semicolon */
-.class-name{
+.class-name {
   background-color: blue;
   color:red
 }
@@ -110,30 +110,30 @@ In Sublime, go to View>Indendation>Tab Width: 2, also uncheck "Indent Using Spac
 
 ```css
 /* Good */
-.class-name{
+.class-name {
   color: #fff;
 }
 
 /* Bad - closing brace is in the wrong place */
-.class-name{
+.class-name {
   color: #fff;
   }
 
-/* Bad - space before opening brace */
-.class-name {
+/* Bad - no space before opening brace */
+.class-name{
   color: #fff;
 }
 ```
 
 ```css
 /* Good - Use dashes */
-.this-is-good{}
+.this-is-good {}
 
 /* Good - don't use camel case */
-.thisIsBad{}
+.thisIsBad {}
 
 /* Bad - don't use underscores */
-.this_is_bad{}
+.this_is_bad {}
 ```
 <a name="comments"></a>
 ## 4. Comments
@@ -183,14 +183,14 @@ Keep nesting to 3 levels deep!!! This prevents overly-specific CSS selectors. Av
 
 ```scss
 /* Good */
-.class-name{
-  .inner{
+.class-name {
+  .inner {
     ...
 
-      .title{
+      .title {
        ....
 
-          .subtxt{
+          .subtxt {
           ...
 
            }
@@ -200,16 +200,16 @@ Keep nesting to 3 levels deep!!! This prevents overly-specific CSS selectors. Av
 
 /* Bad - more than 3 levels of nesting */
 .class-name {
-  .inner{
+  .inner {
     ...
 
-      .title{
+      .title {
        ....
 
-          .subtxt{
+          .subtxt {
               ...
 
-              .element{
+              .element {
                   ...
 
                }
@@ -224,7 +224,7 @@ Declare `@extend` followed by `@include` statements first in a declaration block
 
 ```scss
 /* Good */
-.class-name{
+.class-name {
     @extend .company;
     @include font-size(14);
     color: #555;
@@ -232,7 +232,7 @@ Declare `@extend` followed by `@include` statements first in a declaration block
 }
 
 /* Bad */
-.class-name{
+.class-name {
     color: #555;
     @extend .company;
     font-size: 11px;
