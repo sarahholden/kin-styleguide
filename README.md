@@ -32,18 +32,18 @@ Each indentation level is made up of one 2-space tab
 ```css
 /* Good */
 .class {
-  color: #fff;
   background-color: #000;
+  color: #fff;
 }
 
 /* Bad - four spaces */
 .class {
-    color: #fff;
     background-color: #000;
+    color: #fff;
 }
 
 /* Bad - all on one line */
-.class {color: #fff; background-color: #000;}
+.class { background-color: #000;color: #fff;}
 ```
 
 In Sublime, go to View>Indendation>Tab Width: 2, also uncheck "Indent Using Spaces." Also install Sublime's "Trailing Spaces" plugin through package control to be able to see/trim trailing white space easily.
@@ -73,14 +73,14 @@ In Sublime, go to View>Indendation>Tab Width: 2, also uncheck "Indent Using Spac
 .selector-1,
 .selector-2,
 .selector-3[type="text"] {
+  display: block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  display: block;
-  font-family: helvetica, arial, sans-serif;
-  color: #333;
   background: #fff;
   background: linear-gradient(#fff, rgba(0, 0, 0, 0.8));
+  color: #333;
+  font-family: helvetica, arial, sans-serif;
 }
 
 .selector-a,
@@ -105,7 +105,7 @@ In Sublime, go to View>Indendation>Tab Width: 2, also uncheck "Indent Using Spac
 /* Bad - missing last semicolon */
 .class-name {
   background-color: blue;
-  color:red
+  color: red
 }
 ```
 
