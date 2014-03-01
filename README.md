@@ -177,7 +177,7 @@ Example:
 ```
 
 <a name="order-of-properties"></a>
-## 4. Order of Properties
+## 5. Order of Properties
 
 Order properties grouped by type using CSSComb. This keeps our code base clean and allows for others to scan and understand your css a bit faster.
 
