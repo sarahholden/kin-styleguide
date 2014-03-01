@@ -10,7 +10,8 @@ The purpose of this document is to provide guidelines for writing CSS. Code conv
 2. [Whitespace](#whitespace)
 3. [Format](#format)
 4. [Comments](#comments)
-5. [SCSS](#scss)
+5. [Order of Properties](#order-of-properties)
+6. [SCSS](#scss)
 
 
 
@@ -175,9 +176,49 @@ Example:
 /* Basic comment */
 ```
 
+<a name="order-of-properties"></a>
+## 4. Order of Properties
+
+Order properties grouped by type using CSSComb. This keeps our code base clean and allows for others to scan and understand your css a bit faster.
+
+Example:
+
+```css
+.selector {
+  /* Positioning */
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+
+  /* Display & Box Model */
+  display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 10px;
+  width: 100px;
+  height: 100px;
+  border: 10px solid #333;
+
+  /* Color */
+  background: #000;
+  color: #fff
+  
+  /* Text */
+  font-family: sans-serif;
+  text-align: right;
+  font-size: 16px;
+  line-height: 1.4;
+
+  /* Other */
+  cursor: pointer;
+}
+```
+
 
 <a name="scss"></a>
-## 5. SCSS
+## 6. SCSS
 
 Keep nesting to 3 levels deep!!! This prevents overly-specific CSS selectors. Avoid large numbers of nested rules. Break them up when readability starts to be affected. Preference to avoid nesting that spreads over more than 20 lines.
 
