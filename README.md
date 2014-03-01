@@ -43,7 +43,7 @@ Each indentation level is made up of one 2-space tab
 }
 
 /* Bad - all on one line */
-.class { background-color: #000;color: #fff;}
+.class { background-color: #000; color: #fff;}
 ```
 
 In Sublime, go to View>Indendation>Tab Width: 2, also uncheck "Indent Using Spaces." Also install Sublime's "Trailing Spaces" plugin through package control to be able to see/trim trailing white space easily.
